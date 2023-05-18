@@ -1,0 +1,32 @@
+server:
+  port: 8080
+spring:
+  http:
+    multipart:
+      max-file-size=10MB
+      max-request-size=10MB
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        #generate_statistics: true
+        format_sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:postgresql://${app.dbIp}:5432/${app.dbName}
+    username: ${app.dbUsername}
+    password: ${app.dbPassword}
+    initialization-mode: always
+
+app:
+
+  # Database Configuration.
+  dbIp: localhost # IP of the machine where the database is installed. #TODO: http?
+  dbUsername: postgres # database username.
+  dbPassword: 123456 # Password of 'postgres' user.
+  dbName: DAYSNDAYS # Database name for OMI. Should be created before 'omi-server' has been started, it must be 'OMI'.
+  jwtSecret: vemSecretKey
+  jwtExpirationMs: 86400000
+
+
